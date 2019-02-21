@@ -23,7 +23,6 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/mongoHeadlines", { useNewUrlParser: true });
 
 // Routes
 app.get("/scrape", function (req, res) {
@@ -59,7 +58,8 @@ app.get("/scrape", function (req, res) {
             res.send("Scrape Complete");
         });
     });
+});
 
-    app.listen(PORT, function () {
-        console.log("App is running on port " + PORT + "!");
-    });
+app.listen(PORT, function() {
+    console.log("App running on port " + PORT + "!");
+  });
