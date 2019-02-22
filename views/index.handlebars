@@ -1,0 +1,10 @@
+<ul>
+{{#each articles }}
+<li>
+<h3>{{this.title}}</h3>
+<a href={{this.link}}>Read More</a>
+<p>{{this.summary}}</p>
+<button data-id={{this._id}}>Comment</button>
+</li>
+{{/each}}
+</ul>
