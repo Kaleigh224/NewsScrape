@@ -50,13 +50,13 @@ app.get("/scrape", function (req, res) {
     axios.get("https://www.heraldonline.com/news/local/community/fort-mill-times/").then(function (response) {
         var $ = cheerio.load(response.data);
 
-        $("article.local").each(function (i, element) {
+        $("article.local.media").each(function (i, element) {
             var result = {};
 
-            result.link = $(this).children(".teaser").children(".title").children("a").attr("href");
+            result.link = $(element).children(".teaser").children(".title").children("a").attr("href");
 
-            result.title = $(this).children(".teaser").children(".title").children("a").text();
-            result.summary = $(this).children(".teaser").children(".summary").text();
+            result.title = $(element).children(".teaser").children(".title").children("a").text();
+            result.summary = $(element).children(".teaser").children(".summary").text();
             console.log(result);
 
             if (result.title && result.link && result.summary) {
@@ -77,9 +77,9 @@ app.get("/scrape", function (req, res) {
                 )
 
             }
-            res.send("Scrape Complete");
         });
     });
+    res.send("Scrape Complete");
 });
 
 app.post("/save", function(req, res) {

@@ -11,14 +11,19 @@ function displayResults(articles) {
         $("tbody").append(tr);
     })
 }
-// ajax function to load the table inside index.html 
-$.getJSON("/scrape", function (data) {
-    displayResults(data);
-    // console.log(data);
-    // for (var i = 0; i < data.length; i++) {
-    //     $("#results").append("<tr><td>" + data[i].link + "</td>" +
-    //         "<td>" + data[i].title + "</td>" +
-    //         "<td>" + data[i].summary + "</td></tr>");
-    // }
+// button on click with ajax function to load the table inside index.html 
+$("#scrape").on("click", function() {
+    $.getJSON("/scrape", function (data) {
+        displayResults(data);
+    });
 });
+
+
+// button to clear articles
+$("#clear").on("click", function() {
+
+})
+
+
+
 
