@@ -13,7 +13,7 @@ var PORT = process.env.PORT || 3000;
 var app = express();
 
 // Database configuration
-var databaseUrl = "newsScrape";
+var databaseUrl = process.env.MONGODB_URI || "newsScrape";
 var collections = ["scrapeData", "note"];
 
 
